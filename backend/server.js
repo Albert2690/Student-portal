@@ -16,7 +16,7 @@ connecDb();
 // Middleware
 app.use(
   cors({
-    origin: ['http://localhost:5173','https://quadros-student-portal.netlify.app/'],
+    origin: ['http://localhost:5173','https://quadros-student-portal.netlify.app'],
     credentials: true, // Enable credentials
   })
 );
