@@ -11,7 +11,7 @@ const userLogin = async(req,res)=>{
 
 
     try{
-        console.log(req.body,'bodyyy')
+        // console.log(req.body,'bodyyy')
         const {email,password} = req.body
         if(!email || !password){
             return res.status(400).json({message:'Credententials are missign'})
@@ -21,8 +21,10 @@ const userLogin = async(req,res)=>{
             const result = await matchPassword(password,user.password)
 
             if(result){
-                generateToken(res,user._id)
-                return res.status(200).json({user:user,success:true
+                const token = generateToken(res,user._id)
+              // console.log(token,'token from login')
+
+                return res.status(200).json({user:user,success:true, token
                 })
             }else{
                 return res.status(401).json({message:"Password Mismatch"})

@@ -2,8 +2,10 @@ import axios from 'axios';
 
 // ✅ Create a base instance
 export const apiClient = axios.create({
-  baseURL: 'https://student-portal-abzs.onrender.com', // your API base URL
-  withCredentials: true, // include cookies if using backend-based auth
+  baseURL: 'https://student-portal-abzs.onrender.com',
+   // your API base URL
+  //  baseURL: 'http://localhost:7007', // your API base URL
+  withCredentials: false, 
   timeout: 10000,
 });
 
@@ -38,6 +40,7 @@ apiClient.interceptors.response.use(
         console.warn('⚠️ Token expired or unauthorized. Logging out...');
         
         localStorage.removeItem('authFlag');
+        localStorage.removeItem('token');
         window.location.href = '/login'; // redirect user
       }
 

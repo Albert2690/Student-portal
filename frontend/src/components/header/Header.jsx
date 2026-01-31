@@ -1,37 +1,43 @@
 import React, { useState, useEffect } from "react";
 import { CLIENTROUTES } from "../../../../backend/routes/clientRoutes";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
+  const handleLogout = () => {
+    localStorage.removeItem("authFlag");
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
-
-const MENU_ITEMS = [
-  {
-    name: "Dashboard",
-    path: CLIENTROUTES.DASHBOARD,
-    icon: "📊",
-    description: "Overview & Analytics",
-  },
-  {
-    name: "Students",
-    path: CLIENTROUTES.LIST_STUDENTS, // make sure this exists
-    icon: "👥",
-    description: "Manage Students",
-  },
-  {
-    name: "Courses",
-    path: CLIENTROUTES.COURSES,
-    icon: "📚",
-    description: "Course Management",
-  },
-  {
-    name: "Fees",
-    path: CLIENTROUTES.FEES, // optional / future
-    icon: "⚙️",
-    description: "Configuration",
-  },
-];
+  const MENU_ITEMS = [
+    {
+      name: "Dashboard",
+      path: CLIENTROUTES.DASHBOARD,
+      icon: "📊",
+      description: "Overview & Analytics",
+    },
+    {
+      name: "Students",
+      path: CLIENTROUTES.LIST_STUDENTS, // make sure this exists
+      icon: "👥",
+      description: "Manage Students",
+    },
+    {
+      name: "Courses",
+      path: CLIENTROUTES.COURSES,
+      icon: "📚",
+      description: "Course Management",
+    },
+    {
+      name: "Fees",
+      path: CLIENTROUTES.FEES, // optional / future
+      icon: "⚙️",
+      description: "Configuration",
+    },
+  ];
 
 
   // Close sidebar when screen size changes to desktop
@@ -76,7 +82,7 @@ const MENU_ITEMS = [
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex space-x-8">
+            <nav className="hidden lg:flex items-center space-x-8">
               {MENU_ITEMS.map((item) => (
                 <a
                   key={item.name}
@@ -86,6 +92,12 @@ const MENU_ITEMS = [
                   {item.name}
                 </a>
               ))}
+              <button
+                onClick={handleLogout}
+                className="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200"
+              >
+                Logout
+              </button>
             </nav>
 
             {/* Mobile menu button */}
@@ -190,6 +202,26 @@ const MENU_ITEMS = [
                 </svg>
               </a>
             ))}
+             {/* Logout Option for Mobile */}
+             <button
+              onClick={() => {
+                setIsOpen(false);
+                handleLogout();
+              }}
+              className="flex items-center w-full p-4 rounded-xl hover:bg-red-50 transition-all duration-200 group mt-4 border border-red-100"
+            >
+              <div className="flex items-center justify-center w-12 h-12 bg-red-100 rounded-lg mr-4 group-hover:bg-red-200 transition-colors duration-200">
+                <span className="text-red-500 text-xl">🚪</span>
+              </div>
+              <div className="flex-1 text-left">
+                <h3 className="font-semibold text-red-600 group-hover:text-red-700 transition-colors duration-200">
+                  Logout
+                </h3>
+                <p className="text-sm text-red-400 group-hover:text-red-500">
+                  Sign out of account
+                </p>
+              </div>
+            </button>
           </nav>
 
           {/* User Profile Section */}

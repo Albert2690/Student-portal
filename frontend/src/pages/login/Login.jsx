@@ -36,6 +36,7 @@ export default function Login() {
   onSuccess: (data) => {
     if (data.success) {
       localStorage.setItem('authFlag', 'true');
+      localStorage.setItem('token', data.token);
       navigate('/')
       alert("Login successful!");
     } else {
