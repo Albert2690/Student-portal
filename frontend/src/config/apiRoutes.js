@@ -3,6 +3,7 @@ export const userApiRoutes = {
     REGISTER: '/api/user/register',
     
     // Student Routes
+    STUDENT_LOGIN: '/api/student/login',
     CREATE_STUDENT: '/api/student/create',
     GET_STUDENTS: '/api/student/list',
     GET_STUDENT_PROFILE: '/api/student/profile', // Append /:studentId in usage
@@ -14,5 +15,12 @@ export const userApiRoutes = {
     UPDATE_COURSE: '/api/admin/course', // Append /:id in usage
     LIST_COURSES: '/api/admin/course', 
     DELETE_COURSE: '/api/admin/course', // Append /:id in usage
-    DASHBOARD_STATS: '/api/admin/dashboard-stats'
+    DASHBOARD_STATS: '/api/admin/dashboard-stats',
+    
+    // Expense Routes
+    CREATE_EXPENSE: '/api/user/create-expense',
+    GET_EXPENSES: '/api/user/expenses',
+    UPDATE_EXPENSE: '/api/user/update-expense', // Append /:id in usage
+    DELETE_EXPENSE: '/api/user/delete-expense', // Append /:id in usage
+    GET_EXPENSE: '/api/user/expense-profile' // Append /:id in usage
 }

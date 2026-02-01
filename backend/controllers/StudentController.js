@@ -1,4 +1,43 @@
 import { Student } from "../models/StudentModel.js";
+import {generateStudentToken} from "../utils/jwt/user/generateToken.js";
+
+export const studentLogin = async (req, res) => {
+  try {
+
+    console.log(req.body,'body')
+    const { email, password } = req.body; // password is expected to be the student's ID
+
+    if (!email || !password) {
+      return res.status(400).json({ success: false, message: "Please provide email and password (ID)" });
+    }
+
+    const student = await Student.findOne({ email });
+
+    if (!student) {
+      return res.status(404).json({ success: false, message: "Student not found" });
+    }
+
+    // Check if the provided password matches the student's ID
+
+    console.log(student.admissionNo.toString(),password,'password')
+    if (student.admissionNo.toString() !== password) {
+      console.log('Invalid credentials')
+      return res.status(401).json({ success: false,studentSession:false, message: "Invalid credentials" });
+    }
+
+    const token = generateStudentToken(res,student._id);
+
+    res.status(200).json({
+      success: true,
+      message: "Login successful",
+      studentToken:stoken,
+      student,
+    });
+  } catch (error) {
+    console.error("Student login error:", error);
+    res.status(500).json({ success: false, message: "Server Error", error: error.message });
+  }
+};
 
 export const createStudent = async (req, res) => {
   try {

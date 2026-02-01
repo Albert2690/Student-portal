@@ -6,5 +6,6 @@ export const CLIENTROUTES = {
     STUDENT_PROFILE:'/student-profile/:id',
     LIST_STUDENTS:'/list-students',
     COURSES:'/courses',
-    FEES:'/fees'
+    FEES:'/fees',
+    EXPENSES:'/expenses'
 }

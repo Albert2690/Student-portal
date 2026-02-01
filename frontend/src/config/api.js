@@ -36,7 +36,7 @@ apiClient.interceptors.response.use(
   (error) => {
     if (error.response) {
       // 🔹 Handle Unauthorized (token expired or invalid)
-      if (error.response.status === 401) {
+      if (error.response.status === 401 && error.response.data.userSession === false) {
         console.warn('⚠️ Token expired or unauthorized. Logging out...');
         
         localStorage.removeItem('authFlag');

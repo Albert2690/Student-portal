@@ -12,6 +12,7 @@ import ListCourses from "../../pages/courses/ListCourses";
 import { CLIENTROUTES } from "../../../../backend/routes/clientRoutes";
 import ProtectedRoutes from "./ProtectedRoutes";
 import StudentFees from "../../pages/fees/StudentFees";
+import Expenses from "../../pages/expense/Expenses";
 
 function UserRoutes() {
   return (
@@ -26,6 +27,8 @@ function UserRoutes() {
         <Route path={CLIENTROUTES.STUDENT_EDIT} element={<EditStudent />} />
         <Route path={CLIENTROUTES.COURSES} element={<ListCourses />} />
         <Route path={CLIENTROUTES.FEES} element={<StudentFees />} />
+        <Route path={CLIENTROUTES.EXPENSES} element={<Expenses />} />
+
 
       </Route>
     </Routes>

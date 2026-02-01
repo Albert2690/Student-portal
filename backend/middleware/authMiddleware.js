@@ -19,11 +19,11 @@ export const verifyToken = (req, res, next) => {
       return next();
     } catch (error) {
       console.error("Token verification failed:", error);
-      return res.status(401).json({ success: false, message: "Unauthorized - Invalid Token" });
+      return res.status(401).json({ success: false,userSession:false, message: "Unauthorized - Invalid Token" });
     }
   }
 
   if (!token) {
-    return res.status(401).json({ success: false, message: "Unauthorized - No Token Provided" });
+    return res.status(401).json({ success: false,userSession:false, message: "Unauthorized - No Token Provided" });
   }
 };

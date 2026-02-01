@@ -9,5 +9,12 @@ const generateUserToken = (res, userId) => {
 
   return token;
 };
+const generateStudentToken = (res, userId) => {
+  const token = jwt.sign({ userId, role: "student" }, process.env.JWT_SECRETKEY_USER, {
+    expiresIn: "40d",
+  });
 
-export default generateUserToken;
+  return token;
+};
+
+export {generateUserToken,generateStudentToken}

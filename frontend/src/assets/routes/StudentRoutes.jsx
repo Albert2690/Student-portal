@@ -1,9 +1,22 @@
-import React from 'react'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import StudentLogin from "../../pages/student/StudentLogin";
+import StudentDashboard from "../../pages/student/StudentDashboard";
+import StudentLayout from "../../layout/StudentLayout";
 
-function StudentRoutes() {
+import ProtectedStudentRoutes from "./ProtectedStudentRoutes";
+
+export default function StudentRoutes() {
   return (
-    <div>StudentRoutes</div>
-  )
-}
+    <Routes>
+      <Route element={<ProtectedStudentRoutes />}>
+        <Route path="login" element={<StudentLogin />} />
+        <Route path="/" element={<StudentDashboard />} />
 
-export default StudentRoutes
+        <Route element={<StudentLayout />}>
+          <Route path="dashboard" element={<StudentDashboard />} />
+        </Route>
+      </Route>
+    </Routes>
+  );
+}

@@ -37,6 +37,12 @@ function Header() {
       icon: "⚙️",
       description: "Configuration",
     },
+     {
+      name: "Expenses",
+      path: CLIENTROUTES.EXPENSES, // optional / future
+      icon: "💳",
+      description: "Configuration",
+    },
   ];
 
 
@@ -77,7 +83,7 @@ function Header() {
                 <span className="text-white font-bold text-xl">🎓</span>
               </div>
               <h1 className="text-white font-bold text-xl sm:text-2xl lg:text-3xl">
-                Student Portal
+                Quadros Portal
               </h1>
             </div>
 

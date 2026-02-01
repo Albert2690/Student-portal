@@ -99,7 +99,7 @@ export default function Login() {
           <h1 className="text-5xl font-bold mb-6 leading-tight">
             Welcome to
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-300">
-              Student Portal
+               Quadros Portal
             </span>
           </h1>
           

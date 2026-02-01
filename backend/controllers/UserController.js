@@ -1,5 +1,5 @@
 import User from "../models/UserModel.js"
-import generateToken from "../utils/jwt/user/generateToken.js";
+import { generateUserToken } from "../utils/jwt/user/generateToken.js";
 import bcrypt from 'bcrypt'
 import Course from "../models/CourseModel.js";
 
@@ -21,7 +21,7 @@ const userLogin = async(req,res)=>{
             const result = await matchPassword(password,user.password)
 
             if(result){
-                const token = generateToken(res,user._id)
+                const token = generateUserToken(res,user._id)
               // console.log(token,'token from login')
 
                 return res.status(200).json({user:user,success:true, token

@@ -170,7 +170,7 @@ function StudentPage() {
             </div>
 
             {/* Department Filter */}
-            <select
+            {/* <select
               value={selectedDepartment}
               onChange={(e) => setSelectedDepartment(e.target.value)}
               className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white"
@@ -180,7 +180,7 @@ function StudentPage() {
                   {dept === "All" ? "All Departments" : dept}
                 </option>
               ))}
-            </select>
+            </select> */}
 
             {/* Year Filter */}
             <select
@@ -210,7 +210,7 @@ function StudentPage() {
             {/* ➕ Add Student Button */}
             <button
               onClick={() => navigate("/create-student")}
-              className="flex items-center justify-center gap-2 bg-indigo-600 text-white px-4 py-3 rounded-lg font-medium hover:bg-indigo-700 transition"
+              className="flex items-center justify-center gap-2 bgGradient text-white px-4 py-3 rounded-lg font-medium hover:bg-indigo-700 transition"
             >
               <Plus size={18} />
               Add Student
