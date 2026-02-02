@@ -4,7 +4,7 @@ import {generateStudentToken} from "../utils/jwt/user/generateToken.js";
 export const studentLogin = async (req, res) => {
   try {
 
-    console.log(req.body,'body')
+    // console.log(req.body,'body')
     const { email, password } = req.body; // password is expected to be the student's ID
 
     if (!email || !password) {
@@ -30,7 +30,7 @@ export const studentLogin = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Login successful",
-      studentToken:stoken,
+      studentToken:token,
       student,
     });
   } catch (error) {

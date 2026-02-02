@@ -26,8 +26,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Routes
-app.use("/api/user",verifyToken, userRoutes);
-app.use("/api/admin", verifyToken, adminRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/admin", adminRoutes);
 app.use("/api/student", studentRoutes);
 
 // Start server
