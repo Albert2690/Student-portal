@@ -2,9 +2,9 @@ import axios from 'axios';
 
 // ✅ Create a base instance
 export const apiClient = axios.create({
-  baseURL: 'https://student-portal-abzs.onrender.com',
+  // baseURL: 'https://student-portal-abzs.onrender.com',
    // your API base URL
-  //  baseURL: 'http://localhost:7007', // your API base URL
+   baseURL: 'http://localhost:7007', // your API base URL
   withCredentials: false, 
   timeout: 10000,
 });

@@ -16,6 +16,7 @@ import {
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { apiClient } from "../../config/api";
 import { userApiRoutes } from "../../config/apiRoutes";
+import Toast from "../common/Toast";
 
 const handleCreate = async ({studentDetails}) => {
   try {
@@ -30,9 +31,20 @@ const handleCreate = async ({studentDetails}) => {
 };
 
 const CreateEditStudent = ({ mode, existingStudent = null }) => {
+  
+  // Toast State
+  const [toast, setToast] = useState({ message: "", type: "", isVisible: false });
+
+  const showToast = (message, type = "info") => {
+    setToast({ message, type, isVisible: true });
+  };
+  
+  const closeToast = () => {
+    setToast(prev => ({ ...prev, isVisible: false }));
+  };
 
   console.log("mode:", mode);
-console.log("existingStudent:", existingStudent);
+  console.log("existingStudent:", existingStudent);
   // Initialize form data
   const [formData, setFormData] = useState(
     existingStudent || {
@@ -122,12 +134,6 @@ console.log("existingStudent:", existingStudent);
         const durationMatch = selectedCourse.duration?.match(/(\d+)/);
         const months = durationMatch ? parseInt(durationMatch[1]) : 0;
         
-        // Generate payment installments if not editing or if payments are empty
-        // Only override payments if it's a new course selection that warrants reset, 
-        // but for edit mode usually we want to keep history. 
-        // For simplicity, if we are editing, we might likely NOT want to wipe payments just by clicking dropdown unless necessary.
-        // But the original logic did this, so let's stick to it but be careful.
-        
         let newPayments = [];
         if (mode === 'create' || !formData.payments || formData.payments.length === 0) {
              newPayments = Array.from({ length: months }, (_, i) => ({
@@ -137,7 +143,6 @@ console.log("existingStudent:", existingStudent);
               isPaid: false
             }));
         } else {
-            // Keep existing payments
              newPayments = formData.payments;
         }
 
@@ -151,6 +156,19 @@ console.log("existingStudent:", existingStudent);
       } else {
         setFormData(prev => ({ ...prev, [name]: value }));
       }
+    } else if (name === "courseFeesOriginal") {
+       // Check against course Max Fee
+       const selectedCourse = coursesData?.find(c => c.name === formData.course);
+       if (selectedCourse) {
+          const maxFee = selectedCourse.fees;
+          if (Number(value) > maxFee) {
+             showToast(`Fee cannot exceed the course fee of ₹${maxFee}`, "error");
+             // Clamp the value or just don't update? 
+             // "user should'nt type above" -> blocking update seems best fit
+             return; 
+          }
+       }
+       setFormData(prev => ({ ...prev, [name]: value }));
     } else if (name.startsWith("payment_")) {
         // Handle payment input changes (e.g. payment_0_amount)
         const [_, index, field] = name.split("_");
@@ -1209,6 +1227,13 @@ console.log("existingStudent:", existingStudent);
           </ul>
         </div>
       </div>
+      {toast.isVisible && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={closeToast}
+        />
+      )}
     </div>
   );
 };

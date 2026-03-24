@@ -101,72 +101,9 @@ const handleSubmit = (formData) => {
   }
 };
 
-//   const courses = [
-//     {
-//       id: 1,
-//       shortName: 'REACT-101',
-//       description: 'Comprehensive introduction to React fundamentals, hooks, and modern best practices for building dynamic web applications.',
-//       duration: '8 weeks',
-//       fees: 299,
-//       active: true,
-//       createdDate: '2024-01-15',
-//       updatedDate: '2024-11-20'
-//     },
-//     {
-//       id: 2,
-//       shortName: 'NODE-ADV',
-//       description: 'Advanced Node.js development covering microservices, authentication, database integration, and deployment strategies.',
-//       duration: '12 weeks',
-//       fees: 499,
-//       active: true,
-//       createdDate: '2024-02-01',
-//       updatedDate: '2024-12-05'
-//     },
-//     {
-//       id: 3,
-//       shortName: 'PYTHON-ML',
-//       description: 'Machine learning with Python using scikit-learn, TensorFlow, and practical data science applications.',
-//       duration: '10 weeks',
-//       fees: 599,
-//       active: false,
-//       createdDate: '2023-11-10',
-//       updatedDate: '2024-08-15'
-//     },
-//     {
-//       id: 4,
-//       shortName: 'UI-UX-DES',
-//       description: 'User interface and user experience design principles, wireframing, prototyping, and usability testing.',
-//       duration: '6 weeks',
-//       fees: 349,
-//       active: true,
-//       createdDate: '2024-03-20',
-//       updatedDate: '2024-12-10'
-//     },
-//     {
-//       id: 5,
-//       shortName: 'AWS-CLOUD',
-//       description: 'Cloud computing with AWS covering EC2, S3, Lambda, RDS, and infrastructure as code with Terraform.',
-//       duration: '14 weeks',
-//       fees: 699,
-//       active: true,
-//       createdDate: '2024-01-05',
-//       updatedDate: '2024-12-01'
-//     },
-//     {
-//       id: 6,
-//       shortName: 'CYBER-SEC',
-//       description: 'Cybersecurity fundamentals including network security, ethical hacking, penetration testing, and security protocols.',
-//       duration: '16 weeks',
-//       fees: 799,
-//       active: false,
-//       createdDate: '2023-09-12',
-//       updatedDate: '2024-06-30'
-//     }
-//   ];
 
   const filteredCourses = data?.courses?.filter(course => {
-    const matchesSearch = course.shortName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         course.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = course.shortName.toLowerCase().includes(searchTerm.toLowerCase()) 
     const matchesFilter = filterActive === 'all' || 
                          (filterActive === 'active' && course.isActive) ||
                          (filterActive === 'inactive' && !course.isActive);

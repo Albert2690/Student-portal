@@ -112,11 +112,11 @@ const studentSchema = new mongoose.Schema(
       type: String,
       default: new Date().getFullYear().toString(),
     },
-    department: {
-      type: String,
-      required: true,
-      trim: true,
-    },
+    // department: {
+    //   type: String,
+    //   required: true,
+    //   trim: true,
+    // },
     course: {
       type: String,
       required: true,

@@ -65,7 +65,7 @@ export const createStudent = async (req, res) => {
       guardianMobile,
 
       joiningYear,
-      department,
+      
       course,
       year,
       status,
@@ -115,7 +115,7 @@ export const createStudent = async (req, res) => {
       guardianMobile,
       admissionNo: newAdmissionNo,
       joiningYear,
-      department,
+    
       course,
       year,
       status,
