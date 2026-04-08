@@ -14,6 +14,10 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import StudentFees from "../../pages/fees/StudentFees";
 import Expenses from "../../pages/expense/Expenses";
 
+import AttendanceList from "../../pages/attendance/AttendanceList";
+import StaffsList from "../../pages/staffs/StaffsList";
+import InvestmentList from "../../pages/investment/InvestmentList";
+
 function UserRoutes() {
   return (
     <Routes>
@@ -28,6 +32,10 @@ function UserRoutes() {
         <Route path={CLIENTROUTES.COURSES} element={<ListCourses />} />
         <Route path={CLIENTROUTES.FEES} element={<StudentFees />} />
         <Route path={CLIENTROUTES.EXPENSES} element={<Expenses />} />
+
+        <Route path={CLIENTROUTES.ATTENDANCE} element={<AttendanceList />} />
+        <Route path={CLIENTROUTES.STAFFS} element={<StaffsList />} />
+        <Route path={CLIENTROUTES.INVESTMENT} element={<InvestmentList />} />
 
 
       </Route>

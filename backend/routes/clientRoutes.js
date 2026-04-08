@@ -7,5 +7,8 @@ export const CLIENTROUTES = {
     LIST_STUDENTS:'/list-students',
     COURSES:'/courses',
     FEES:'/fees',
-    EXPENSES:'/expenses'
+    EXPENSES:'/expenses',
+    ATTENDANCE:'/attendance',
+    STAFFS:'/staffs',
+    INVESTMENT:'/investment'
 }
